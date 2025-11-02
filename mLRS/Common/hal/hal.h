@@ -216,6 +216,10 @@ Note: Some "high-level" features are set for each device in the device_conf.h fi
 
 //-- DIY Boards, 868/915 MHz Devices
 
+#ifdef RX_PICOFLIGHT_WL5MOC
+#include "stm32/rx-hal-picoflight-wl5moc.h"
+#endif
+
 #ifdef RX_DIY_E22_G441KB
 #include "stm32/rx-hal-diy-e22-g441kb.h"
 #endif

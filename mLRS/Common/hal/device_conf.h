@@ -281,6 +281,14 @@ The default selection of frequency bands can be overruled by feature defines.
 
 //-- DIY Boards, 868/915 MHz Devices
 
+#ifdef RX_PICOFLIGHT_WL5MOC
+  #define DEVICE_NAME "PicoFlight WL5MOC"
+  #define DEVICE_IS_RECEIVER
+  #define DEVICE_HAS_SX126x
+  #define FREQUENCY_BAND_868_MHZ
+  #define FREQUENCY_BAND_915_MHZ_FCC
+#endif
+
 #ifdef RX_DIY_E22_G441KB
   #define DEVICE_NAME "DIY E22 G441KB"
   #define DEVICE_IS_RECEIVER
