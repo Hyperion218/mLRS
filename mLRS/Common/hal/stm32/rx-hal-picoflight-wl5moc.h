@@ -7,15 +7,8 @@
 // hal
 //*******************************************************
 
-//-------------------------------------------------------
-// RX Seeedstudio Grove Wio-E5 board STM32WLE5JC, https://wiki.seeedstudio.com/Grove_LoRa_E5_New_Version/
-//-------------------------------------------------------
-// this board has significant restrictions
-// no green LED
-// no bind button
-// no serial port
-
 #define DEVICE_HAS_OUT
+#define DEVICE_HAS_SERIAL_OR_DEBUG
 #define DEVICE_HAS_SINGLE_LED
 #define DEVICE_HAS_SYSTEMBOOT
 
@@ -38,15 +31,15 @@
 // UART = output port, SBus or whatever
 // UARTF = debug port
 
-//#define UARTB_USE_UART1_PB6PB7 // serial // PB6,PB7 Grove plug
-//#define UARTB_BAUD                RX_SERIAL_BAUDRATE
-//#define UARTB_USE_TX
-//#define UARTB_TXBUFSIZE           RX_SERIAL_TXBUFSIZE
-//#define UARTB_USE_TX_ISR
-//#define UARTB_USE_RX
-//#define UARTB_RXBUFSIZE           RX_SERIAL_RXBUFSIZE
+#define UARTB_USE_UART2_PA2PA3 // serial
+#define UARTB_BAUD                RX_SERIAL_BAUDRATE
+#define UARTB_USE_TX
+#define UARTB_TXBUFSIZE           RX_SERIAL_TXBUFSIZE
+#define UARTB_USE_TX_ISR
+#define UARTB_USE_RX
+#define UARTB_RXBUFSIZE           RX_SERIAL_RXBUFSIZE
 
-#define UART_USE_UART2_PA2PA3 // out pin // PA2
+#define UART_USE_UART1_PA9PA10 // out pin // PA2
 #define UART_BAUD                 100000 // SBus normal baud rate, is being set later anyhow
 #define UART_USE_TX
 #define UART_TXBUFSIZE            256
@@ -55,13 +48,13 @@
 //#define UART_RXBUFSIZE            512
 #define OUT_UARTx                 USART2 // UART_UARTx is not known yet, so define by hand
 
-//#define UARTF_USE_UART1_PB6PB7 // debug // also UART1
-//#define UARTF_BAUD                115200
-//#define UARTF_USE_TX
-//#define UARTF_TXBUFSIZE           512
-//#define UARTF_USE_TX_ISR
-////#define UARTF_USE_RX
-////#define UARTF_RXBUFSIZE           512
+#define UARTF_USE_UART2_PA2PA3 // debug // also UART1
+#define UARTF_BAUD                115200
+#define UARTF_USE_TX
+#define UARTF_TXBUFSIZE           512
+#define UARTF_USE_TX_ISR
+//#define UARTF_USE_RX
+//#define UARTF_RXBUFSIZE           512
 
 
 //-- SX12xx & SPI
@@ -164,7 +157,7 @@ void button_init(void)
 
 bool button_pressed(void)
 {
-    return gpio_read_activelow(BUTTON);
+    return gpio_read_activehigh(BUTTON);
 }
 
 //-- SystemBootLoader
