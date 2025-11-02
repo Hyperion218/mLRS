@@ -22,7 +22,7 @@
 // user can modify them to their liking
 
 // un-comment to enable Rx module to go into bind mode after power up
-//#define RX_BIND_MODE_AFTER_POWERUP
+#define RX_BIND_MODE_AFTER_POWERUP
 
 
 // Development features. Note: They are offered for testing, but they are not for production
